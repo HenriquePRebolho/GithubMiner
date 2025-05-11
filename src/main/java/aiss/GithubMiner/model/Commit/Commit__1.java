@@ -1,11 +1,10 @@
-
-package aiss.GithubMiner.model;
+package aiss.GithubMiner.model.Commit;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-@JsonIgnoreProperties(ignoreUnknown = true)
-public class Commit {
+@JsonIgnoreProperties(ignoreUnknown=true)
+public class Commit__1 {
 
     @JsonProperty("author")
     private Author author;
@@ -95,7 +94,7 @@ public class Commit {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append(Commit.class.getName()).append('@').append(Integer.toHexString(System.identityHashCode(this))).append('[');
+        sb.append(Commit__1 .class.getName()).append('@').append(Integer.toHexString(System.identityHashCode(this))).append('[');
         sb.append("author");
         sb.append('=');
         sb.append(((this.author == null)?"<null>":this.author));

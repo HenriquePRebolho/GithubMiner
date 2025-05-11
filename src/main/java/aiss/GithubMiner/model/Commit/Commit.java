@@ -1,20 +1,18 @@
 
-package aiss.GithubMiner.model;
+package aiss.GithubMiner.model.Commit;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-import java.util.List;
-
-@JsonIgnoreProperties(ignoreUnknown = true)
-public class Example {
+@JsonIgnoreProperties(ignoreUnknown=true)
+public class Commit {
 
     @JsonProperty("sha")
     private String sha;
     @JsonProperty("node_id")
     private String nodeId;
     @JsonProperty("commit")
-    private Commit commit;
+    private Commit__1 commit;
     @JsonProperty("url")
     private String url;
     @JsonProperty("html_url")
@@ -49,12 +47,12 @@ public class Example {
     }
 
     @JsonProperty("commit")
-    public Commit getCommit() {
+    public Commit__1 getCommit() {
         return commit;
     }
 
     @JsonProperty("commit")
-    public void setCommit(Commit commit) {
+    public void setCommit(Commit__1 commit) {
         this.commit = commit;
     }
 
@@ -121,7 +119,7 @@ public class Example {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append(Example.class.getName()).append('@').append(Integer.toHexString(System.identityHashCode(this))).append('[');
+        sb.append(Commit.class.getName()).append('@').append(Integer.toHexString(System.identityHashCode(this))).append('[');
         sb.append("sha");
         sb.append('=');
         sb.append(((this.sha == null)?"<null>":this.sha));

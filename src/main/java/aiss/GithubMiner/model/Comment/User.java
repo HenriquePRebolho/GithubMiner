@@ -1,11 +1,11 @@
 
-package aiss.GithubMiner.model;
+package aiss.GithubMiner.model.Comment;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
-import com.fasterxml.jackson.annotation.*;
-
-@JsonIgnoreProperties(ignoreUnknown = true)
-public class Author__1 {
+@JsonIgnoreProperties(ignoreUnknown=true)
+public class User {
 
     @JsonProperty("login")
     private String login;
@@ -239,7 +239,7 @@ public class Author__1 {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append(Author__1 .class.getName()).append('@').append(Integer.toHexString(System.identityHashCode(this))).append('[');
+        sb.append(User.class.getName()).append('@').append(Integer.toHexString(System.identityHashCode(this))).append('[');
         sb.append("login");
         sb.append('=');
         sb.append(((this.login == null)?"<null>":this.login));
