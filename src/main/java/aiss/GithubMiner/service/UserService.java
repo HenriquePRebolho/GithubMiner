@@ -70,7 +70,7 @@ public class UserService {
     public boolean sendUserToGitMiner(String username, String token) {
         MinerUser user = getAuthenticatedUser(username, token);
         if (user == null) {
-            System.err.println(" No se pudo obtener el usuario desde Bitbucket");
+            System.err.println(" No se pudo obtener el usuario desde Github");
             return false;
         }
         return sendUserToGitMiner(user);
