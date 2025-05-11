@@ -20,13 +20,13 @@ public class IssueService {
 
     @Autowired
     RestTemplate restTemplate;
-    public List<MinerIssue> getIssues(String workspace, String repoSlug, int nIssues, int maxPages) {
+    public List<MinerIssue> getIssues(String owner, String repo, int nIssues, int maxPages) {
         List<MinerIssue> result = new ArrayList<>();
 
         for (int page = 1; page <= maxPages; page++) {
             String uri = String.format(
-                    "https://api.bitbucket.org/2.0/repositories/%s/%s/issues?pagelen=%d&page=%d",
-                    workspace, repoSlug, nIssues, page);
+                    "https://api.github.com/repos/%s/%s/issues?page=%d&page=%d",
+                    owner, repo, nIssues, page);
 
             HttpHeaders headers = new HttpHeaders();
             headers.setAccept(Arrays.asList(MediaType.APPLICATION_JSON));
@@ -51,7 +51,7 @@ public class IssueService {
                 }
 
             } catch (JsonProcessingException e) {
-                System.err.println("Error parsing JSON from Bitbucket: " + e.getMessage());
+                System.err.println("Error parsing JSON from gitHub: " + e.getMessage());
                 e.printStackTrace();
             }
         }
@@ -59,9 +59,9 @@ public class IssueService {
         return result;
     }
 
-    public MinerIssue getIssueById(String workspace, String repoSlug, String issueId) {
-        String uri = String.format("https://api.bitbucket.org/2.0/repositories/%s/%s/issues/%s",
-                workspace, repoSlug, issueId);
+    public MinerIssue getIssueById(String owner, String repo, long issueId) {
+        String uri = String.format("https://api.github.com/repos/%s/%s/issues/%s",
+                owner, repo, issueId);
 
         HttpHeaders headers = new HttpHeaders();
         headers.setAccept(List.of(MediaType.APPLICATION_JSON));

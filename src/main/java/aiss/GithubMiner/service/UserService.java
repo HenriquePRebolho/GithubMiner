@@ -15,7 +15,7 @@ public class UserService {
     @Autowired
     RestTemplate restTemplate;
     public MinerUser getAuthenticatedUser(String username, String appPassword) {
-        String uri = "https://api.bitbucket.org/2.0/user";
+        String uri = "https://api.github.com/user";
 
         // Basic Auth
         String auth = username + ":" + appPassword;

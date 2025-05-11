@@ -23,7 +23,7 @@ public class CommentService {
     @Autowired
     RestTemplate restTemplate;
 
-    public List<MinerComment> getComments(String owner, String repo, int issueId, int maxPages) {
+    public List<MinerComment> getComments(String owner, String repo, long issueId, int maxPages) {
         List<MinerComment> result = new ArrayList<>();
 
         for (int page = 1; page <= maxPages; page++) {
@@ -63,7 +63,7 @@ public class CommentService {
         return result;
     }
 
-    public int sendCommentsToGitMiner(String owner, String repo, int issueId, int maxPages) {
+    public int sendCommentsToGitMiner(String owner, String repo, long issueId, int maxPages) {
         List<MinerComment> comments = getComments(owner, repo, issueId, maxPages);
         String gitMinerUrl = "http://localhost:8080/gitminer/comments";
 
