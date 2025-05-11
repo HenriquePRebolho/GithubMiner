@@ -30,7 +30,7 @@ class CommentServiceTest {
         MinerComment transformed = CommentTransformer.toGitMinerComment(comment);
 
         assertNotNull(transformed);
-        assertEquals("1", transformed.getId());
+        assertEquals("1", transformed.getId().toString());
         assertEquals("Comentario de prueba", transformed.getBody());
         assertEquals("2024-01-01T12:00:00Z", transformed.getCreatedAt());
         assertEquals("2024-01-01T13:00:00Z", transformed.getUpdatedAt());
@@ -38,7 +38,7 @@ class CommentServiceTest {
 
     @Test
     @DisplayName("Get comments from GitHub, transform them to GitMiner format and print them on the console")
-    void getComments() {
+    public void getComments() {
         String owner = "spring-projects";
         String repo = "spring-framework";
         int issueId = 1;
@@ -55,7 +55,7 @@ class CommentServiceTest {
 
     @Test
     @DisplayName("Enviar comentarios desde Github a GitMiner")
-    void sendCommentsToGitMiner() {
+    public void sendCommentsToGitMiner() {
         String owner = "spring-projects";
         String repo = "spring-framework";
         int issueId = 1;

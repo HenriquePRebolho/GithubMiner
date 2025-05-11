@@ -70,7 +70,4 @@ class CommitServiceTest {
         service.sendCommitsToGitMiner(owner, repo, nCommits, maxPages);
     }
 
-    @Test
-    void printCommit() {
-    }
 }
