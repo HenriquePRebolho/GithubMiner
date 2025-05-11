@@ -1,11 +1,12 @@
 
 package aiss.GithubMiner.model.Issue;
 
+
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
-
 @JsonIgnoreProperties(ignoreUnknown=true)
-@Generated("jsonschema2pojo")
+
+
 public class Label {
 
     @JsonProperty("id")
