@@ -62,7 +62,7 @@ public class CommitService {
     }
 
     public MinerCommit getCommitById(String owner, String repo, String sha) {
-        String uri = String.format("https://api.gitHub.com/repos/%s/%s/commit/%s",
+        String uri = String.format("https://api.github.com/repos/%s/%s/commit/%s",
                 owner, repo, sha);
 
         HttpHeaders headers = new HttpHeaders();

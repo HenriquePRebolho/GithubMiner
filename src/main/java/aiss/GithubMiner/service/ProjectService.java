@@ -21,12 +21,12 @@ public class ProjectService {
 
     @Autowired
     RestTemplate restTemplate;
-    public List<MinerProject> getProjects(String workspace,
+    public List<MinerProject> getProjects(String owner,String repoName,
                                           List<MinerCommit> allCommits,
                                           List<MinerIssue> allIssues) {
         List<MinerProject> result = new ArrayList<>();
 
-        String uri = String.format("https://api.bitbucket.org/2.0/workspaces/%s/projects", workspace);
+        String uri = String.format("https://githup.com/repos/%s/%s", owner , repoName);
 
         HttpHeaders headers = new HttpHeaders();
         headers.setAccept(List.of(MediaType.APPLICATION_JSON));
@@ -59,13 +59,13 @@ public class ProjectService {
         } catch (JsonProcessingException e) {
             System.err.println("Error al parsear JSON: " + e.getMessage());
         } catch (Exception e) {
-            System.err.println(" Error en la llamada a Bitbucket: " + e.getMessage());
+            System.err.println(" Error en la llamada a gitHub: " + e.getMessage());
         }
 
         return result;
     }
-    public int sendProjectsToGitMiner(String workspace ,List<MinerCommit> commits, List<MinerIssue> issues) {
-        List<MinerProject> projects = getProjects(workspace, commits, issues );
+    public int sendProjectsToGitMiner(String owner ,String repoName,List<MinerCommit> commits, List<MinerIssue> issues) {
+        List<MinerProject> projects = getProjects(owner,repoName,commits, issues );
         String gitMinerUrl = "http://localhost:8080/gitminer/projects"; // Ajusta si tu endpoint es diferente
 
         int sent = 0;
