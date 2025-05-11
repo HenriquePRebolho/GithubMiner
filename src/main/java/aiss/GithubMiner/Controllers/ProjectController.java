@@ -32,7 +32,7 @@ public class ProjectController {
     ) {
         List<MinerCommit> commits = commitService.getCommits(workspace, repoSlug, nItems, maxPages);
         List<MinerIssue> issues = issueService.getIssues(workspace, repoSlug, nItems, maxPages);
-        return projectService.getProjects(workspace, commits, issues);
+        return projectService.getProjects(workspace, repoSlug, commits, issues);
     }
 
     @PostMapping("/{workspace}/projects")
@@ -44,7 +44,7 @@ public class ProjectController {
     ) {
         List<MinerCommit> commits = commitService.getCommits(workspace, repoSlug, nItems, maxPages);
         List<MinerIssue> issues = issueService.getIssues(workspace, repoSlug, nItems, maxPages);
-        int saved = projectService.sendProjectsToGitMiner(workspace, commits, issues);
+        int saved = projectService.sendProjectsToGitMiner(workspace, repoSlug, commits, issues);
         return saved + " proyectos enviados a GitMiner correctamente.";
     }
 }
