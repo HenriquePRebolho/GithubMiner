@@ -43,7 +43,7 @@ public class CommentService {
             );
 
             try {
-                JsonNode valuesNode = response.getBody().get("values");
+                JsonNode valuesNode = response.getBody();
                 ObjectMapper mapper = new ObjectMapper();
                 Comment[] comments = mapper.treeToValue(valuesNode, Comment[].class);
 

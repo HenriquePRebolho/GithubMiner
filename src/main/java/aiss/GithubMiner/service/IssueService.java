@@ -40,7 +40,7 @@ public class IssueService {
             );
 
             try {
-                JsonNode valuesNode = response.getBody().get("values");
+                JsonNode valuesNode = response.getBody();
                 ObjectMapper mapper = new ObjectMapper();
                 Issue[] issues = mapper.treeToValue(valuesNode, Issue[].class);
 

@@ -42,7 +42,7 @@ public class CommitService {
             );
 
             try {
-                JsonNode valuesNode = response.getBody().get("values");
+                JsonNode valuesNode = response.getBody();
                 ObjectMapper mapper = new ObjectMapper();
                 Commit[] commits = mapper.treeToValue(valuesNode, Commit[].class);
 

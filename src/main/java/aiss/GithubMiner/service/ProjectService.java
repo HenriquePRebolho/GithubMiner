@@ -37,7 +37,7 @@ public class ProjectService {
                     uri, HttpMethod.GET, requestEntity, JsonNode.class
             );
 
-            JsonNode valuesNode = response.getBody().get("values");
+            JsonNode valuesNode = response.getBody();
             ObjectMapper mapper = new ObjectMapper();
             Project[] projects = mapper.treeToValue(valuesNode, Project[].class);
 
