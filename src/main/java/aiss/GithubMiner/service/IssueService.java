@@ -1,6 +1,7 @@
 package aiss.GithubMiner.service;
 import aiss.GithubMiner.model.Issue.Issue;
 import aiss.GithubMiner.model.gitminer.MinerIssue;
+import aiss.GithubMiner.transformer.IssueTransformer;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;

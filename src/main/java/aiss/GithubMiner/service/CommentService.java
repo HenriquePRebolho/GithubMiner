@@ -4,6 +4,7 @@ package aiss.GithubMiner.service;
 import aiss.GithubMiner.model.Comment.Comment;
 import aiss.GithubMiner.model.gitminer.MinerComment;
 
+import aiss.GithubMiner.transformer.CommentTransformer;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;

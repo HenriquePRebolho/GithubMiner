@@ -1,6 +1,7 @@
 package aiss.GithubMiner.service;
 import aiss.GithubMiner.model.Comment.User;
 import aiss.GithubMiner.model.gitminer.MinerUser;
+import aiss.GithubMiner.transformer.UserTransformer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.*;
 import org.springframework.stereotype.Service;

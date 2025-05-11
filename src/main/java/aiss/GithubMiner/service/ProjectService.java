@@ -4,6 +4,7 @@ import aiss.GithubMiner.model.gitminer.MinerCommit;
 import aiss.GithubMiner.model.gitminer.MinerIssue;
 import aiss.GithubMiner.model.gitminer.MinerProject;
 import aiss.GithubMiner.model.project.Project;
+import aiss.GithubMiner.transformer.ProjectTransformer;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;

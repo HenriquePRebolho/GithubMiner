@@ -2,6 +2,7 @@ package aiss.GithubMiner.service;
 
 import aiss.GithubMiner.model.Commit.Commit;
 import aiss.GithubMiner.model.gitminer.MinerCommit;
+import aiss.GithubMiner.transformer.CommitTransformer;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
