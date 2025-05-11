@@ -79,7 +79,7 @@ public class CommitService {
         return CommitTransformer.toGitMinerCommit(response.getBody());
     }
 
-    // Metodo que nos piden para POST commits desde github a git miner
+    // Metodo que nos piden para POST commits desde GitHub a git miner
     public int sendCommitsToGitMiner(String owner, String repo, int nCommits, int maxPages) {
         List<MinerCommit> commits = getCommits(owner, repo, nCommits, maxPages);
         String gitMinerUrl = "http://localhost:8080/gitminer/commits"; // URL real del endpoint de GitMiner

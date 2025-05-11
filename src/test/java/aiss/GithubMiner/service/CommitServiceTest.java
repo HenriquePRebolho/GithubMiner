@@ -1,6 +1,8 @@
 package aiss.GithubMiner.service;
 
+import aiss.GithubMiner.model.Commit.Commit;
 import aiss.GithubMiner.model.gitminer.MinerCommit;
+import aiss.GithubMiner.transformer.CommitTransformer;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,10 +17,25 @@ class CommitServiceTest {
     CommitService service;
 
     @Test
+    public void testToGitMinerCommit() throws Exception {
+        // Simulación de un commit mínimo
+        Commit commit = new Commit();
+        commit.setSha("abc123");
+        commit.setCommentsUrl("Mensaje de prueba");
+
+        MinerCommit transformed = CommitTransformer.toGitMinerCommit(commit);
+
+
+        assertNotNull(transformed);
+        assertEquals("abc123", transformed.getId());
+        assertEquals("Mensaje de prueba", transformed.getMessage());
+    }
+
+    @Test
     @DisplayName("Get commits from GitHub transform them to GitMiner format and print them on the console")
     public void getCommits() {
-        String owner = "gentlero"; // ejemplo real
-        String repo = "Github-api"; // ejemplo real
+        String owner = "spring-projects"; // ejemplo real
+        String repo = "spring-framework"; // ejemplo real
         int nCommits = 5;
         int maxPages = 1;
 
@@ -34,19 +51,19 @@ class CommitServiceTest {
     @Test
     @DisplayName("Get commit by commit id")
     public void getCommitById() {
-        String owner = "gentlero";
-        String repo = "Github-api";
-        String commitId = "67a0362b29f34c45251ce88c5851756fb30a65cc"; // Usa un ID real
+        String owner = "spring-projects";
+        String repo = "spring-framework";
+        String sha = "6878587a335e99c0b5793c1705c7a264bcc4460d"; // Usa un ID real
 
-        MinerCommit commit = service.getCommitById(owner, repo, commitId);
+        MinerCommit commit = service.getCommitById(owner, repo, sha);
         service.printCommit(commit);
     }
 
     @Test
-    @DisplayName("Enviar commits desde Github a GitMiner")
+    @DisplayName("Enviar commits desde GitHub a GitMiner")
     public void sendCommitsToGitMiner() {
-        String owner = "gentlero";
-        String repo = "gitHub-api";
+        String owner = "spring-projects";
+        String repo = "spring-framework";
         int nCommits = 5;
         int maxPages = 1;
 

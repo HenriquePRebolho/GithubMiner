@@ -12,33 +12,33 @@ import java.util.List;
 public class CommitController {
 
     @Autowired
-    CommitService commitService;
+    CommitService service;
 
 
 
-    @GetMapping("/{workspace}/{repo_slug}")
+    @GetMapping("/{owner}/{repo}")
     public List<MinerCommit> getCommitsFromFixedRoute(
-            @PathVariable String workspace,
-            @PathVariable("repo_slug") String repoSlug,
+            @PathVariable String owner,
+            @PathVariable("repo") String repo,
             @RequestParam(defaultValue = "5") int nCommits,
             @RequestParam(defaultValue = "2") int maxPages
     ) {
-        return commitService.getCommits(workspace, repoSlug, nCommits, maxPages);
+        return service.getCommits(owner, repo, nCommits, maxPages);
     }
 
     @GetMapping("/commits/{id}")
     public MinerCommit getCommit(@PathVariable String id) {
-        return commitService.getCommitById("gentlero", "github-api", id);
+        return service.getCommitById("spring-projects", "spring-framework", id);
     }
 
-    @PostMapping("/{workspace}/{repo_slug}")
+    @PostMapping("/{owner}/{repo}")
     public String sendCommitsToGitMiner(
-            @PathVariable String workspace,
-            @PathVariable("repo_slug") String repoSlug,
+            @PathVariable String owner,
+            @PathVariable("repo") String repo,
             @RequestParam(defaultValue = "5") int nCommits,
             @RequestParam(defaultValue = "2") int maxPages
     ) {
-        int saved = commitService.sendCommitsToGitMiner(workspace, repoSlug, nCommits, maxPages);
+        int saved = service.sendCommitsToGitMiner(owner, repo, nCommits, maxPages);
         return saved + " commits enviados a GitMiner correctamente.";
     }
 }

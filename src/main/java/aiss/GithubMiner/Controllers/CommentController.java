@@ -14,24 +14,24 @@ public class CommentController {
     @Autowired
     CommentService commentService;
 
-    @GetMapping("/{workspace}/{repo_slug}/issues/{issueId}/comments")
+    @GetMapping("/{owner}/{repo}/issues/{issueId}/comments")
     public List<MinerComment> getComments(
-            @PathVariable String workspace,
-            @PathVariable("repo_slug") String repoSlug,
+            @PathVariable String owner,
+            @PathVariable("repo") String repo,
             @PathVariable Integer issueId,
             @RequestParam(defaultValue = "2") int maxPages
     ) {
-        return commentService.getComments(workspace, repoSlug, issueId, maxPages);
+        return commentService.getComments(owner, repo, issueId, maxPages);
     }
 
-    @PostMapping("/{workspace}/{repo_slug}/issues/{issueId}/comments")
+    @PostMapping("/{owner}/{repo}/issues/{issueId}/comments")
     public String sendCommentsToGitMiner(
-            @PathVariable String workspace,
-            @PathVariable("repo_slug") String repoSlug,
+            @PathVariable String owner,
+            @PathVariable("repo") String repo,
             @PathVariable Integer issueId,
             @RequestParam(defaultValue = "2") int maxPages
     ) {
-        int saved = commentService.sendCommentsToGitMiner(workspace, repoSlug, issueId, maxPages);
+        int saved = commentService.sendCommentsToGitMiner(owner, repo, issueId, maxPages);
         return saved + " comentarios enviados a GitMiner correctamente.";
     }
 }

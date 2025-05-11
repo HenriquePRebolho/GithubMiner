@@ -5,8 +5,6 @@ package aiss.GithubMiner.model.Issue;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 @JsonIgnoreProperties(ignoreUnknown=true)
-
-
 public class Label {
 
     @JsonProperty("id")

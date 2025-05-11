@@ -14,29 +14,29 @@ public class IssueController {
     @Autowired
     IssueService issueService;
 
-    @GetMapping("/{workspace}/{repo_slug}/issues")
+    @GetMapping("/{owner}/{repo}/issues")
     public List<MinerIssue> getIssues(
-            @PathVariable String workspace,
-            @PathVariable("repo_slug") String repoSlug,
+            @PathVariable String owner,
+            @PathVariable("repo") String repo,
             @RequestParam(defaultValue = "5") int nIssues,
             @RequestParam(defaultValue = "2") int maxPages
     ) {
-        return issueService.getIssues(workspace, repoSlug, nIssues, maxPages);
+        return issueService.getIssues(owner, repo, nIssues, maxPages);
     }
 
     @GetMapping("/issues/{id}")
     public MinerIssue getIssue(@PathVariable String id) {
-        return issueService.getIssueById("gentlero", "github-api", Long.parseLong(id));
+        return issueService.getIssueById("spring-projects", "spring-framework", Long.parseLong(id));
     }
 
-    @PostMapping("/{workspace}/{repo_slug}/issues")
+    @PostMapping("/{owner}/{repo}/issues")
     public String sendIssuesToGitMiner(
-            @PathVariable String workspace,
-            @PathVariable("repo_slug") String repoSlug,
+            @PathVariable String owner,
+            @PathVariable("repo") String repo,
             @RequestParam(defaultValue = "5") int nIssues,
             @RequestParam(defaultValue = "2") int maxPages
     ) {
-        int saved = issueService.sendIssuesToGitMiner(workspace, repoSlug, nIssues, maxPages);
+        int saved = issueService.sendIssuesToGitMiner(owner, repo, nIssues, maxPages);
         return saved + " issues enviados a GitMiner correctamente.";
     }
 }
