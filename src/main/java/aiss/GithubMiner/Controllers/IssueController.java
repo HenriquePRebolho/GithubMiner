@@ -26,7 +26,7 @@ public class IssueController {
 
     @GetMapping("/issues/{id}")
     public MinerIssue getIssue(@PathVariable String id) {
-        return issueService.getIssueById("gentlero", "github-api", id);
+        return issueService.getIssueById("gentlero", "github-api", Long.parseLong(id));
     }
 
     @PostMapping("/{workspace}/{repo_slug}/issues")
